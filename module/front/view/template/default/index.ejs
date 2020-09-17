@@ -1,0 +1,43 @@
+<%
+layout(_view.get('_layout/content'));
+
+script('front/script/Front.js');
+script('front/script/Form.js');
+script('front/script/Page.js');
+script('front/script/Order.js');
+script('front/script/Offer.js');
+script('front/script/module.js');
+
+const dataUrl = _url('/api/base/data/');
+const fileUrl = _url('/api/base/file/');
+const metaUrl = _url('/api/base/meta/');
+
+const isGuest = _controller.user.isGuest();
+const isClient = !isGuest && _controller.user.hasAssignment('client');
+const isDriver = !isGuest && _controller.user.hasAssignment('driver');
+%>
+
+<%- include(_view.get('_part/signboard')) %>
+
+<div class="front"
+     data-guest="<%- isGuest %>"
+     data-client="<%- isClient %>"
+     data-driver="<%- isDriver %>"
+     data-user="<%- _controller.user.getId() %>"
+     data-data-url="<%- dataUrl %>"
+     data-meta-url="<%- metaUrl %>">
+
+    <%- include('./_main', {isGuest, isClient, isDriver}) %>
+
+    <%- include('./_offers') %>
+    <%- include('./_offer') %>
+    <%- include('./_newOffer') %>
+
+    <%- include('./_orders') %>
+    <%- include('./_order') %>
+    <%- include('./_newOrder') %>
+    <%- include('./_viewOrder') %>
+
+    <%- include('./_waitingOrders') %>
+    <%- include('./_waitingOrder') %>
+</div>

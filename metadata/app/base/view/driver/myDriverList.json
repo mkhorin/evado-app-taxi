@@ -1,0 +1,15 @@
+{
+  "label": "My drivers",
+  "description": "My driver list",
+  "editView": "myDriver",
+  "filter": {
+    "user": "$user"
+  },
+  "readOnly": true,
+  "attrs": [
+    {
+      "name": "name",
+      "orderNumber": 10
+    }
+  ]
+}

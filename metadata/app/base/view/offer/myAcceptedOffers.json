@@ -1,0 +1,34 @@
+{
+  "label": "My accepted offers",
+  "description": "My accpted offer list",
+  "editView": "myOffer",
+  "filter": {
+    "driver": "$user.meta.base.driver",
+    "_state": [
+      "accepted",
+      "inProgress"
+    ]
+  },
+  "order": {
+    "_id": -1
+  },
+  "readOnly": true,
+  "attrs": [
+    {
+      "name": "_state",
+      "orderNumber": 10
+    },
+    {
+      "name": "order",
+      "orderNumber": 20
+    },
+    {
+      "name": "price",
+      "orderNumber": 30
+    },
+    {
+      "name": "info",
+      "orderNumber": 40
+    }
+  ]
+}

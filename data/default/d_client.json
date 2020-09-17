@@ -1,0 +1,34 @@
+[
+  {
+    "_id": {
+      "$oid": "5f56d1f4fd97650d04461c0a"
+    },
+    "_class": "client",
+    "_creator": {
+      "$oid": "5f56cf97a9e4561894216286"
+    },
+    "name": "Bob",
+    "user": {
+      "$oid": "5f56d7618ac98f19c85ac538"
+    },
+    "_createdAt": {
+      "$date": "2020-09-08T00:36:04.709Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "5f56e1ee9bce881d94a560d4"
+    },
+    "_class": "client",
+    "_creator": {
+      "$oid": "5f56e1ee9bce881d94a560d1"
+    },
+    "name": "Sara",
+    "user": {
+      "$oid": "5f56e1ee9bce881d94a560d1"
+    },
+    "_createdAt": {
+      "$date": "2020-09-08T01:44:14.868Z"
+    }
+  }
+]

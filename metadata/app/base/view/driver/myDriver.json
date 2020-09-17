@@ -1,0 +1,16 @@
+{
+  "label": "My driver",
+  "description": "My driver view",
+  "readOnly": false,
+  "attrs": [
+    {
+      "name": "name",
+      "orderNumber": 10
+    },
+    {
+      "name": "user",
+      "orderNumber": 20,
+      "viewType": "string"
+    }
+  ]
+}

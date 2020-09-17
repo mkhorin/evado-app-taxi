@@ -1,0 +1,36 @@
+{
+  "label": "Waiting order",
+  "readOnly": true,
+  "attrs": [
+    {
+      "name": "_state",
+      "orderNumber": 10
+    },
+    {
+      "name": "start",
+      "orderNumber": 20
+    },
+    {
+      "name": "end",
+      "orderNumber": 30
+    },
+    {
+      "name": "price",
+      "orderNumber": 50
+    },
+    {
+      "name": "info",
+      "orderNumber": 60
+    },
+    {
+      "name": "offers",
+      "orderNumber": 80
+    },
+    {
+      "name": "client",
+      "eagerLoading": true,
+      "eagerView": "public",
+      "orderNumber": 90
+    }
+  ]
+}

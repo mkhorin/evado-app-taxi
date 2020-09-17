@@ -1,0 +1,313 @@
+{
+  "abstract": false,
+  "description": "Taxi ordering",
+  "label": "Order",
+  "attrs": [
+    {
+      "name": "_state",
+      "label": "State",
+      "type": "string",
+      "viewType": "state",
+      "commonSearchable": false,
+      "createOnRead": false,
+      "eagerLoading": false,
+      "escape": true,
+      "hidden": false,
+      "history": false,
+      "multiple": false,
+      "orderNumber": 10,
+      "sortable": true,
+      "sortableRelation": false,
+      "readOnly": true,
+      "required": false,
+      "selectSearchable": false,
+      "trim": true,
+      "unique": false
+    },
+    {
+      "name": "start",
+      "label": "Start point",
+      "type": "string",
+      "commonSearchable": false,
+      "createOnRead": false,
+      "eagerLoading": false,
+      "escape": true,
+      "hidden": false,
+      "history": false,
+      "multiple": false,
+      "orderNumber": 20,
+      "sortable": false,
+      "sortableRelation": false,
+      "readOnly": false,
+      "required": true,
+      "selectSearchable": false,
+      "trim": true,
+      "unique": false,
+      "rules": [
+        {
+          "type": "string",
+          "orderNumber": 10,
+          "max": 1024
+        }
+      ]
+    },
+    {
+      "name": "end",
+      "label": "End point",
+      "type": "string",
+      "commonSearchable": false,
+      "createOnRead": false,
+      "eagerLoading": false,
+      "escape": true,
+      "hidden": false,
+      "history": false,
+      "multiple": false,
+      "orderNumber": 30,
+      "sortable": false,
+      "sortableRelation": false,
+      "readOnly": false,
+      "required": true,
+      "selectSearchable": false,
+      "trim": true,
+      "unique": false,
+      "rules": [
+        {
+          "type": "string",
+          "orderNumber": 10,
+          "max": 1024
+        }
+      ]
+    },
+    {
+      "name": "price",
+      "label": "Price",
+      "type": "integer",
+      "commonSearchable": false,
+      "createOnRead": false,
+      "eagerLoading": false,
+      "escape": true,
+      "hidden": false,
+      "history": false,
+      "multiple": false,
+      "orderNumber": 50,
+      "sortable": false,
+      "sortableRelation": false,
+      "readOnly": false,
+      "required": true,
+      "selectSearchable": false,
+      "trim": true,
+      "unique": false,
+      "rules": [
+        {
+          "type": "number",
+          "orderNumber": 10,
+          "integerOnly": true,
+          "min": 1
+        }
+      ]
+    },
+    {
+      "name": "info",
+      "label": "Additional info",
+      "type": "text",
+      "commonSearchable": false,
+      "createOnRead": false,
+      "eagerLoading": false,
+      "escape": true,
+      "hidden": false,
+      "history": false,
+      "multiple": false,
+      "orderNumber": 60,
+      "sortable": false,
+      "sortableRelation": false,
+      "readOnly": false,
+      "required": false,
+      "selectSearchable": false,
+      "trim": true,
+      "unique": false,
+      "rules": [
+        {
+          "type": "string",
+          "orderNumber": 10,
+          "max": 2048
+        }
+      ]
+    },
+    {
+      "name": "offer",
+      "label": "Active offer",
+      "type": "backref",
+      "viewType": "relationSelect",
+      "commands": [
+        "edit"
+      ],
+      "commonSearchable": false,
+      "createOnRead": false,
+      "eagerLoading": true,
+      "escape": true,
+      "filter": {
+        "_state": "inProgress"
+      },
+      "hidden": false,
+      "history": false,
+      "multiple": false,
+      "orderNumber": 70,
+      "sortable": false,
+      "sortableRelation": false,
+      "refAttr": "order",
+      "refClass": "offer",
+      "readOnly": true,
+      "required": false,
+      "selectSearchable": false,
+      "trim": true,
+      "unique": false
+    },
+    {
+      "name": "offers",
+      "label": "Offers",
+      "type": "backref",
+      "commands": [
+        "create",
+        "edit",
+        "delete"
+      ],
+      "commonSearchable": false,
+      "createOnRead": true,
+      "eagerLoading": false,
+      "escape": true,
+      "hidden": false,
+      "history": false,
+      "multiple": true,
+      "orderNumber": 80,
+      "sortable": false,
+      "sortableRelation": false,
+      "refAttr": "order",
+      "refClass": "offer",
+      "readOnly": false,
+      "required": false,
+      "selectSearchable": false,
+      "trim": true,
+      "unique": false
+    },
+    {
+      "name": "client",
+      "label": "Client",
+      "type": "ref",
+      "viewType": "relationSelect",
+      "description": "Client order",
+      "commands": [
+        "edit"
+      ],
+      "commonSearchable": false,
+      "createOnRead": false,
+      "defaultValue": "$user.meta.base.client",
+      "eagerLoading": true,
+      "eagerView": "public",
+      "escape": true,
+      "hidden": false,
+      "history": false,
+      "multiple": false,
+      "orderNumber": 90,
+      "sortable": false,
+      "sortableRelation": false,
+      "refClass": "client",
+      "readOnly": true,
+      "required": true,
+      "selectSearchable": false,
+      "trim": true,
+      "unique": false
+    }
+  ],
+  "states": [
+    {
+      "name": "draft",
+      "label": "Draft",
+      "defaults": false,
+      "description": "Order in preparation",
+      "readOnly": false
+    },
+    {
+      "name": "waiting",
+      "label": "Waiting",
+      "defaults": true,
+      "description": "Waiting for offers",
+      "readOnly": true
+    },
+    {
+      "name": "inProgress",
+      "label": "In progress",
+      "defaults": false,
+      "description": "Order in progress",
+      "readOnly": true
+    },
+    {
+      "name": "cancelled",
+      "label": "Cancelled",
+      "defaults": false,
+      "description": "Client canceled order",
+      "readOnly": true
+    },
+    {
+      "name": "closed",
+      "label": "Closed",
+      "defaults": false,
+      "description": "Order completed",
+      "readOnly": true
+    }
+  ],
+  "transitions": [
+    {
+      "name": "ready",
+      "label": "Ready",
+      "nullStartState": false,
+      "startStates": [
+        "draft"
+      ],
+      "finalState": "waiting",
+      "orderNumber": 10
+    },
+    {
+      "name": "edit",
+      "label": "Edit",
+      "nullStartState": false,
+      "startStates": [
+        "waiting"
+      ],
+      "finalState": "draft",
+      "options": {
+        "confirmation": "All current offers will be deleted"
+      },
+      "orderNumber": 20,
+      "config": {
+        "Class": "component/meta/transit/OrderEditTransit"
+      }
+    },
+    {
+      "name": "close",
+      "label": "Close",
+      "hint": "Close when finished",
+      "nullStartState": false,
+      "startStates": [
+        "inProgress"
+      ],
+      "finalState": "closed",
+      "options": {
+        "confirmation": "Do you want to close this deal?"
+      },
+      "orderNumber": 30
+    },
+    {
+      "name": "cancel",
+      "label": "Cancel",
+      "nullStartState": false,
+      "startStates": [
+        "inProgress"
+      ],
+      "finalState": "cancelled",
+      "options": {
+        "confirmation": "Do you want to cancel this approved deal?"
+      },
+      "orderNumber": 40
+    }
+  ]
+}

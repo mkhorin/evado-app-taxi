@@ -1,0 +1,14 @@
+{
+  "description": "My client list",
+  "editView": "myClient",
+  "filter": {
+    "user": "$user"
+  },
+  "readOnly": true,
+  "attrs": [
+    {
+      "name": "name",
+      "orderNumber": 10
+    }
+  ]
+}

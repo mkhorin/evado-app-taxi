@@ -1,0 +1,175 @@
+[
+  {
+    "_id": {
+      "$oid": "5f6190037b749f125855f183"
+    },
+    "_class": "offer",
+    "_creator": {
+      "$oid": "5f56e2209bce881d94a560d6"
+    },
+    "price": 75,
+    "driver": {
+      "$oid": "5f56e2209bce881d94a560d9"
+    },
+    "order": {
+      "$oid": "5f618ea17b749f125855f171"
+    },
+    "info": "Lacus mus at lorem semper quis odio",
+    "_state": "accepted",
+    "_createdAt": {
+      "$date": "2020-09-16T04:09:39.975Z"
+    },
+    "_transiting": null
+  },
+  {
+    "_id": {
+      "$oid": "5f6190157b749f125855f186"
+    },
+    "_class": "offer",
+    "_creator": {
+      "$oid": "5f56e2209bce881d94a560d6"
+    },
+    "price": 45,
+    "driver": {
+      "$oid": "5f56e2209bce881d94a560d9"
+    },
+    "order": {
+      "$oid": "5f618e7f7b749f125855f16d"
+    },
+    "info": "Justo mauris leo ut consectetuer congue",
+    "_state": "inProgress",
+    "_createdAt": {
+      "$date": "2020-09-16T04:09:57.801Z"
+    },
+    "_transiting": null
+  },
+  {
+    "_id": {
+      "$oid": "5f6190337b749f125855f189"
+    },
+    "_class": "offer",
+    "_creator": {
+      "$oid": "5f56e2209bce881d94a560d6"
+    },
+    "price": 65,
+    "driver": {
+      "$oid": "5f56e2209bce881d94a560d9"
+    },
+    "order": {
+      "$oid": "5f618e1c7b749f125855f168"
+    },
+    "info": "Curabitur at nisl volutpat!",
+    "_state": "new",
+    "_createdAt": {
+      "$date": "2020-09-16T04:10:27.451Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "5f61905e7b749f125855f18c"
+    },
+    "_class": "offer",
+    "_creator": {
+      "$oid": "5f56e2209bce881d94a560d6"
+    },
+    "price": 50,
+    "driver": {
+      "$oid": "5f56e2209bce881d94a560d9"
+    },
+    "order": {
+      "$oid": "5f618d2f7b749f125855f160"
+    },
+    "info": "C-class coupe",
+    "_state": "new",
+    "_createdAt": {
+      "$date": "2020-09-16T04:11:10.608Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "5f6190ba7b749f125855f190"
+    },
+    "_class": "offer",
+    "_creator": {
+      "$oid": "5f56d7618ac98f19c85ac53a"
+    },
+    "price": 40,
+    "driver": {
+      "$oid": "5f56d1d9fd97650d04461c09"
+    },
+    "order": {
+      "$oid": "5f618d2f7b749f125855f160"
+    },
+    "info": "Orci vel sed tempus nascetur augue Sed lobortis montes",
+    "_state": "accepted",
+    "_createdAt": {
+      "$date": "2020-09-16T04:12:42.456Z"
+    },
+    "_transiting": null
+  },
+  {
+    "_id": {
+      "$oid": "5f6190e67b749f125855f193"
+    },
+    "_class": "offer",
+    "_creator": {
+      "$oid": "5f56d7618ac98f19c85ac53a"
+    },
+    "price": 70,
+    "driver": {
+      "$oid": "5f56d1d9fd97650d04461c09"
+    },
+    "order": {
+      "$oid": "5f618e1c7b749f125855f168"
+    },
+    "info": "Non gravida justo eros laoreet",
+    "_state": "inProgress",
+    "_createdAt": {
+      "$date": "2020-09-16T04:13:26.127Z"
+    },
+    "_transiting": null
+  },
+  {
+    "_id": {
+      "$oid": "5f6190fd7b749f125855f196"
+    },
+    "_class": "offer",
+    "_creator": {
+      "$oid": "5f56d7618ac98f19c85ac53a"
+    },
+    "price": 55,
+    "driver": {
+      "$oid": "5f56d1d9fd97650d04461c09"
+    },
+    "order": {
+      "$oid": "5f618e7f7b749f125855f16d"
+    },
+    "info": "Vestibulum consequat ipsum Sed at quam eu Vestibulum risus id hendrerit",
+    "_state": "new",
+    "_createdAt": {
+      "$date": "2020-09-16T04:13:49.296Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "5f6191177b749f125855f199"
+    },
+    "_class": "offer",
+    "_creator": {
+      "$oid": "5f56d7618ac98f19c85ac53a"
+    },
+    "price": 65,
+    "driver": {
+      "$oid": "5f56d1d9fd97650d04461c09"
+    },
+    "order": {
+      "$oid": "5f618ec07b749f125855f175"
+    },
+    "info": "Donec dictumst tincidunt congue",
+    "_state": "accepted",
+    "_createdAt": {
+      "$date": "2020-09-16T04:14:15.777Z"
+    },
+    "_transiting": null
+  }
+]

@@ -1,0 +1,48 @@
+{
+  "label": "Main",
+  "description": "Main section",
+  "nodes": [
+    {
+      "name": "myAcceptedOffers",
+      "label": "My accepted offers",
+      "orderNumber": 10,
+      "class": "offer",
+      "view": "myAcceptedOffers"
+    },
+    {
+      "name": "myOffers",
+      "label": "My offers",
+      "orderNumber": 20,
+      "class": "offer",
+      "view": "myOffers"
+    },
+    {
+      "name": "waitingOrders",
+      "label": "Waiting orders",
+      "orderNumber": 30,
+      "class": "order",
+      "view": "waitingOrders"
+    },
+    {
+      "name": "myOrders",
+      "label": "My orders",
+      "orderNumber": 40,
+      "class": "order",
+      "view": "myOrders"
+    },
+    {
+      "name": "myDriver",
+      "label": "My driver",
+      "orderNumber": 50,
+      "class": "driver",
+      "view": "myDriverList"
+    },
+    {
+      "name": "myClient",
+      "label": "My client",
+      "orderNumber": 60,
+      "class": "client",
+      "view": "myClientList"
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+<!-- auth/_radio -->
+<%
+const p = {
+    name: typeof name === 'undefined' ? model.getFormAttrName(attr) : name,
+    value: typeof value === 'undefined' ? model.get(attr) : value,
+    label: typeof label === 'undefined' ? model.getAttrLabel(attr) : label,
+    error: _t(model.getFirstError(attr))
+};
+%>
+<div class="form-attr form-group required <%- p.error ? ' has-error' : '' %>">
+    <div class="radio-list text-center">
+    <% for (const {value, text} of items) { %>
+        <label class="radio radio-inline">
+            <% const checked = p.value === value ? 'checked' : ''; %>
+            <input name="<%- p.name %>" value="<%- value %>" required <%- checked %> type="radio">
+            <span data-t=""><%- text %></span>
+        </label>
+    <% } %>
+    </div>
+    <div class="error-block"></div>
+</div>

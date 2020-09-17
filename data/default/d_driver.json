@@ -1,0 +1,34 @@
+[
+  {
+    "_id": {
+      "$oid": "5f56d1d9fd97650d04461c09"
+    },
+    "_class": "driver",
+    "_creator": {
+      "$oid": "5f56cf97a9e4561894216286"
+    },
+    "name": "Tom",
+    "user": {
+      "$oid": "5f56d7618ac98f19c85ac53a"
+    },
+    "_createdAt": {
+      "$date": "2020-09-08T00:35:37.178Z"
+    }
+  },
+  {
+    "_id": {
+      "$oid": "5f56e2209bce881d94a560d9"
+    },
+    "_class": "driver",
+    "_creator": {
+      "$oid": "5f56e2209bce881d94a560d6"
+    },
+    "name": "Denis",
+    "user": {
+      "$oid": "5f56e2209bce881d94a560d6"
+    },
+    "_createdAt": {
+      "$date": "2020-09-08T01:45:04.099Z"
+    }
+  }
+]

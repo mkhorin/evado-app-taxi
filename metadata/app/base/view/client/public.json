@@ -1,0 +1,16 @@
+{
+  "description": "Public client view",
+  "editView": "public",
+  "readOnly": true,
+  "attrs": [
+    {
+      "name": "name",
+      "orderNumber": 10
+    },
+    {
+      "name": "user",
+      "orderNumber": 20,
+      "viewType": "string"
+    }
+  ]
+}

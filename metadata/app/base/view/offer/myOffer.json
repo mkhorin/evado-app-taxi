@@ -1,0 +1,23 @@
+{
+  "label": "My offer",
+  "description": "My offer view",
+  "readOnly": false,
+  "attrs": [
+    {
+      "name": "_state",
+      "orderNumber": 10
+    },
+    {
+      "name": "order",
+      "orderNumber": 20
+    },
+    {
+      "name": "price",
+      "orderNumber": 30
+    },
+    {
+      "name": "info",
+      "orderNumber": 40
+    }
+  ]
+}

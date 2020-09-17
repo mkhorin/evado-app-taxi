@@ -1,0 +1,43 @@
+
+<div class="offer-list loadable-container" data-handler="OrderOfferList" data-order="{{_id}}">
+
+    <template data-id="list">
+        <div class="offer-items">##items##</div>
+    </template>
+
+    <template data-id="item">
+        <div class="offer-item" data-id="##_id##">
+            <p>
+                <label data-t="meta">State</label>
+                <b>##state##</b>
+            </p>
+            <p>
+                <label data-t="">ID</label>
+                <a href="#" data-action="offer">##_id##</a>
+            </p>
+            <p>
+                <label data-t="meta">Price</label>
+                ##price##
+            </p>
+            <p>
+                <label data-t="meta">Driver</label>
+                ##driver##
+            </p>
+        </div>
+    </template>
+
+    <%- include('./_pagination', {start: '##', end: '##'}) %>
+
+    <template data-id="empty">
+        <div class="alert-warning alert">
+            <span data-t="">No offers yet</span>
+        </div>
+    </template>
+
+    <template data-id="error">
+        <div class="alert-danger alert">##text##</div>
+    </template>
+
+    <div class="loadable-content"></div>
+    <div class="loader"><i class="fa fa-spinner fa-spin"></i></div>
+</div>

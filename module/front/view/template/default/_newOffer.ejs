@@ -1,0 +1,50 @@
+<div class="new-offer-modal modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" data-t="">New offer</h4>
+            </div>
+            <div class="modal-body">
+                <div class="modal-error alert-danger alert hidden"></div>
+                <div class="loadable-container" data-handler="NewOffer">
+
+                    <template data-id="offer">
+                        <div class="form-horizontal form" data-handler="Form">
+                            <div class="form-attr form-group required">
+                                <label class="col-md-3 control-label" data-t="meta">Price</label>
+                                <div class="col-md-9">
+                                    <input type="number" name="price" class="form-control" value="{{price}}">
+                                    <div class="error-block"></div>
+                                </div>
+                            </div>
+                            <div class="form-attr form-group">
+                                <label class="col-md-3 control-label" data-t="meta">Additional info</label>
+                                <div class="col-md-9">
+                                    <textarea name="info" class="form-control">{{info}}</textarea>
+                                    <div class="error-block"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </template>
+
+                    <template data-id="error">
+                        <div class="alert-danger alert">{{text}}</div>
+                    </template>
+
+                    <div class="loadable-content"></div>
+                    <div class="loader"><i class="fa fa-spinner fa-spin"></i></div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-success btn" data-command="create">
+                    <span data-t="">Create</span>
+                </button>
+                <button class="btn-default btn" data-dismiss="modal">
+                    <span data-t="">Close</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

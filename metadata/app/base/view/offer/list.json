@@ -1,0 +1,24 @@
+{
+  "description": "Defaul list",
+  "readOnly": true,
+  "attrs": [
+    {
+      "name": "_state",
+      "orderNumber": 10
+    },
+    {
+      "name": "order",
+      "orderNumber": 20
+    },
+    {
+      "name": "price",
+      "orderNumber": 30
+    },
+    {
+      "name": "driver",
+      "eagerLoading": true,
+      "eagerView": "public",
+      "orderNumber": 50
+    }
+  ]
+}

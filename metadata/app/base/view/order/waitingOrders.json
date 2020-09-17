@@ -1,0 +1,29 @@
+{
+  "label": "Waiting orders",
+  "description": "Waiting order list",
+  "editView": "waitingOrder",
+  "filter": {
+    "_state": "waiting"
+  },
+  "readOnly": true,
+  "attrs": [
+    {
+      "name": "start",
+      "orderNumber": 20
+    },
+    {
+      "name": "end",
+      "orderNumber": 30
+    },
+    {
+      "name": "price",
+      "orderNumber": 50
+    },
+    {
+      "name": "client",
+      "eagerLoading": true,
+      "eagerView": "public",
+      "orderNumber": 90
+    }
+  ]
+}

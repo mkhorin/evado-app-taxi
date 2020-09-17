@@ -1,0 +1,14 @@
+
+<%- include(_view.get('auth/_radio'), {
+    attr: 'type',
+    items: [{
+        value: 'client',
+        text: 'As client'
+    }, {
+        value: 'driver',
+        text: 'As driver'
+    }]
+}) %>
+
+<%- include(_view.getParentTemplate('auth/_signUpForm')) %>
+

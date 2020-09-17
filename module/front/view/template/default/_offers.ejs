@@ -1,0 +1,59 @@
+
+<div class="page" data-page="offers" data-handler="OffersPage">
+
+    <div class="page-head">
+        <ol class="breadcrumb">
+            <li><a href="#" data-action="main" data-t="">Main</a></li>
+            <li data-t="meta">Offers</li>
+        </ol>
+    </div>
+
+    <h1 data-t="meta">My offers</h1>
+
+    <div class="order-list loadable-container" data-handler="OfferList">
+
+        <template data-id="list">
+            <div class="offer-items">{{items}}</div>
+        </template>
+
+        <template data-id="item">
+            <div class="offer-item" data-id="{{_id}}">
+                <div class="order-item-agreed cell">
+                    <label data-t="meta">State</label>
+                    <div class="value"><b data-t="meta">{{state}}</b></div>
+                </div>
+                <div class="order-item-id cell">
+                    <label data-t="">ID</label>
+                    <div class="value">
+                        <a href="#" data-action="offer">#{{_id}}</a>
+                    </div>
+                </div>
+                <div class="order-item-cancelled cell">
+                    <label data-t="meta">Price</label>
+                    <div class="value">{{price}}</div>
+                </div>
+                <div class="order-item-id cell">
+                    <label data-t="meta">Order</label>
+                    <div class="value">
+                        <a href="#" data-action="viewOrder" data-id="{{order}}">#{{order}}</a>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <%- include('./_pagination') %>
+
+        <template data-id="empty">
+            <div class="alert-warning alert">
+                <span data-t="">You have no offers</span>
+            </div>
+        </template>
+
+        <template data-id="error">
+            <div class="alert-danger alert">{{text}}</div>
+        </template>
+
+        <div class="loadable-content"></div>
+        <div class="loader"><i class="fa fa-spinner fa-spin"></i></div>
+    </div>
+</div>

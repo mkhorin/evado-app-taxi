@@ -1,0 +1,14 @@
+{
+  "description": "Public client list",
+  "readOnly": true,
+  "attrs": [
+    {
+      "name": "name",
+      "orderNumber": 10
+    },
+    {
+      "name": "user",
+      "orderNumber": 20
+    }
+  ]
+}

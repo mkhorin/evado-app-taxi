@@ -1,0 +1,232 @@
+{
+  "abstract": false,
+  "description": "Driver offer",
+  "label": "Offer",
+  "attrs": [
+    {
+      "name": "_state",
+      "label": "State",
+      "type": "string",
+      "viewType": "state",
+      "commonSearchable": false,
+      "createOnRead": false,
+      "eagerLoading": false,
+      "escape": true,
+      "hidden": false,
+      "history": false,
+      "multiple": false,
+      "orderNumber": 10,
+      "sortable": true,
+      "sortableRelation": false,
+      "readOnly": true,
+      "required": false,
+      "selectSearchable": false,
+      "trim": true,
+      "unique": false
+    },
+    {
+      "name": "order",
+      "label": "Order",
+      "type": "ref",
+      "viewType": "relationSelect",
+      "commands": [
+        "edit"
+      ],
+      "commonSearchable": false,
+      "createOnRead": false,
+      "eagerLoading": false,
+      "escape": true,
+      "hidden": false,
+      "history": false,
+      "multiple": false,
+      "onDelete": "cascade",
+      "orderNumber": 20,
+      "sortable": false,
+      "sortableRelation": false,
+      "refClass": "order",
+      "readOnly": true,
+      "required": true,
+      "selectSearchable": false,
+      "trim": true,
+      "unique": false
+    },
+    {
+      "name": "price",
+      "label": "Price",
+      "type": "integer",
+      "commonSearchable": false,
+      "createOnRead": false,
+      "defaultValue": "$master.price",
+      "eagerLoading": false,
+      "escape": true,
+      "hidden": false,
+      "history": false,
+      "multiple": false,
+      "orderNumber": 30,
+      "sortable": true,
+      "sortableRelation": false,
+      "readOnly": false,
+      "required": true,
+      "selectSearchable": false,
+      "trim": true,
+      "unique": false,
+      "rules": [
+        {
+          "type": "number",
+          "orderNumber": 10,
+          "integerOnly": true,
+          "min": 1
+        }
+      ]
+    },
+    {
+      "name": "info",
+      "label": "Info",
+      "type": "text",
+      "commonSearchable": false,
+      "createOnRead": false,
+      "eagerLoading": false,
+      "escape": true,
+      "hidden": false,
+      "history": false,
+      "multiple": false,
+      "orderNumber": 40,
+      "sortable": false,
+      "sortableRelation": false,
+      "readOnly": false,
+      "required": false,
+      "selectSearchable": false,
+      "trim": true,
+      "unique": false,
+      "rules": [
+        {
+          "type": "string",
+          "orderNumber": 10,
+          "max": 2048
+        }
+      ]
+    },
+    {
+      "name": "driver",
+      "label": "Driver",
+      "type": "ref",
+      "viewType": "relationSelect",
+      "commands": [
+        "edit"
+      ],
+      "commonSearchable": false,
+      "createOnRead": false,
+      "defaultValue": "$user.meta.base.driver",
+      "eagerLoading": true,
+      "eagerView": "public",
+      "escape": true,
+      "hidden": false,
+      "history": false,
+      "multiple": false,
+      "orderNumber": 50,
+      "sortable": false,
+      "sortableRelation": false,
+      "refClass": "driver",
+      "readOnly": true,
+      "required": true,
+      "selectSearchable": false,
+      "trim": true,
+      "unique": false
+    }
+  ],
+  "states": [
+    {
+      "name": "new",
+      "label": "New",
+      "defaults": true,
+      "description": "New offer",
+      "readOnly": true
+    },
+    {
+      "name": "accepted",
+      "label": "Accepted",
+      "defaults": false,
+      "description": "Accepted by client",
+      "readOnly": true
+    },
+    {
+      "name": "cancelled",
+      "label": "Cancelled",
+      "defaults": false,
+      "description": "Cancelled by driver",
+      "readOnly": true
+    },
+    {
+      "name": "inProgress",
+      "label": "In progress",
+      "defaults": false,
+      "description": "Order in progress",
+      "readOnly": true
+    },
+    {
+      "name": "closed",
+      "label": "Closed",
+      "defaults": false,
+      "description": "Closed by driver",
+      "readOnly": true
+    }
+  ],
+  "transitions": [
+    {
+      "name": "accept",
+      "label": "Accept",
+      "description": "Accept this offer",
+      "nullStartState": false,
+      "startStates": [
+        "new"
+      ],
+      "finalState": "accepted",
+      "orderNumber": 10
+    },
+    {
+      "name": "confirm",
+      "label": "Confirm",
+      "hint": "Confirm and start order fulfilling",
+      "nullStartState": false,
+      "startStates": [
+        "accepted"
+      ],
+      "finalState": "inProgress",
+      "orderNumber": 30,
+      "config": {
+        "Class": "component/meta/transit/OfferConfirmationTransit"
+      }
+    },
+    {
+      "name": "close",
+      "label": "Close",
+      "hint": "Close when finished",
+      "nullStartState": false,
+      "startStates": [
+        "inProgress"
+      ],
+      "finalState": "closed",
+      "options": {
+        "confirmation": "Do you want to close this deal?"
+      },
+      "orderNumber": 40
+    },
+    {
+      "name": "cancel",
+      "label": "Cancel",
+      "description": "Cancel this offer",
+      "nullStartState": false,
+      "startStates": [
+        "inProgress"
+      ],
+      "finalState": "cancelled",
+      "options": {
+        "confirmation": "Do you want to cancel this approved deal?"
+      },
+      "orderNumber": 50,
+      "config": {
+        "Class": "component/meta/transit/OfferCancellationTransit"
+      }
+    }
+  ]
+}
