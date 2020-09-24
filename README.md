@@ -1,4 +1,7 @@
-# Evado Taxi Ordering Network App
+# Evado Taxi Network
+
+Built on [Evado Declarative Framework](https://github.com/mkhorin/evado)
+this application helps users to provide each other with taxi services. 
 
 Basic scheme of user-passenger actions:
 
@@ -12,11 +15,6 @@ Basic scheme of user-driver actions:
 - create a counter offer to an waiting order;
 - obtain client consent;
 - confirm and start order execution.
-
-Unified interface for creating, operating and controlling the application.
-
-- [Evado Declarative Framework](https://github.com/mkhorin/evado)
-- [Step-by-step tutorial](http://nervebit.com)
 
 ## Docker installation
 
@@ -80,4 +78,4 @@ Password: 123456
 ```
 
 ## Tutorial
-- [Build App Without Coding](http://nervebit.com)
+- [Build an App Without Coding](http://nervebit.com)
