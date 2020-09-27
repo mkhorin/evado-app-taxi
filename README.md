@@ -1,7 +1,7 @@
 # Evado Taxi Network
 
-Built on [Evado Declarative Framework](https://github.com/mkhorin/evado)
-this application helps users to provide each other with taxi services. 
+An application built on [Evado Declarative Framework](https://github.com/mkhorin/evado) 
+helps users to provide each other with taxi services. 
 
 Basic scheme of user-passenger actions:
 
