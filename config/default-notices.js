@@ -8,10 +8,8 @@ module.exports = {
         text: 'acceptedOffer.text',
         methods: 'popup',
         recipient: {
-            Class: 'component/notifier/OfferDriverFilter'
-        },
-        template: {
-            Class: 'component/notifier/UserNameTemplate'
+            Class: 'component/notifier/UserRecipient',
+            userAttr: 'driver.user'
         }
     },
     'confirmedOffer': {
@@ -20,10 +18,8 @@ module.exports = {
         text: 'confirmedOffer.text',
         methods: 'popup',
         recipient: {
-            Class: 'component/notifier/OfferClientFilter'
-        },
-        template: {
-            Class: 'component/notifier/UserNameTemplate'
+            Class: 'component/notifier/UserRecipient',
+            userAttr: 'order.client.user'
         }
     },
     'newOffer': {
@@ -32,10 +28,8 @@ module.exports = {
         text: 'newOffer.text',
         methods: 'popup',
         recipient: {
-            Class: 'component/notifier/OfferClientFilter'
-        },
-        template: {
-            Class: 'component/notifier/NewOfferTemplate'
+            Class: 'component/notifier/UserRecipient',
+            userAttr: 'order.client.user'
         }
     },
     'newOrder': {
@@ -43,9 +37,6 @@ module.exports = {
         subject: 'newOrder.subject',
         text: 'newOrder.text',
         methods: 'popup',
-        userFilters: 'drivers',
-        template: {
-            Class: 'component/notifier/UserNameTemplate'
-        }
+        userFilters: 'drivers'
     }
 };
