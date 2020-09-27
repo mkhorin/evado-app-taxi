@@ -226,7 +226,7 @@ module.exports = {
             description: 'Check user binding as object creator',
             config: {
                 Class: 'evado/component/meta/rbac/rule/UserRule',
-                attr: '_creator'
+                userAttr: '_creator'
             }
         },
         'clientOffer': {
@@ -275,8 +275,7 @@ module.exports = {
             label: 'User',
             description: 'Check user binding',
             config: {
-                Class: 'evado/component/meta/rbac/rule/UserRule',
-                attr: 'user'
+                Class: 'evado/component/meta/rbac/rule/UserRule'
             }
         }
     },
