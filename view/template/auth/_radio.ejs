@@ -8,13 +8,14 @@ const p = {
 };
 %>
 <div class="form-attr form-group required <%- p.error ? ' has-error' : '' %>">
-    <div class="radio-list text-center">
-    <% for (const {value, text} of items) { %>
-        <label class="radio radio-inline">
-            <% const checked = p.value === value ? 'checked' : ''; %>
-            <input name="<%- p.name %>" value="<%- value %>" required <%- checked %> type="radio">
-            <span data-t=""><%- text %></span>
-        </label>
+    <div class="form-check-list text-center">
+    <% for (const {value, text} of items) {
+        const checked = p.value === value ? 'checked' : ''; %>
+        <div class="form-check form-check-inline">
+            <input id="<%- p.name + value %>" class="form-check-input" name="<%- p.name %>"
+                   value="<%- value %>" required <%- checked %> type="radio">
+            <label for="<%- p.name + value %>" class="form-check-label" data-t=""><%- text %></label>
+        </div>
     <% } %>
     </div>
     <div class="error-block"></div>

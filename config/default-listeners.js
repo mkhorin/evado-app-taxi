@@ -13,22 +13,22 @@ module.exports = [{
     events: 'driverRegistration',
     handlers: 'driverInstantiation'
 }, {
-    description: 'Ready order notice',
+    description: 'Ready order notification',
     events: [
         'meta.base.create.order',
         'meta.base.transit.order.ready'
     ],
-    notices: 'newOrder'
+    notifications: 'newOrder'
 }, {
-    description: 'New offer notice',
+    description: 'New offer notification',
     events: 'meta.base.create.offer',
-    notices: 'newOffer'
+    notifications: 'newOffer'
 }, {
-    description: 'Accepted offer notice',
+    description: 'Accepted offer notification',
     events: 'meta.base.transit.offer.accept',
-    notices: 'acceptedOffer'
+    notifications: 'acceptedOffer'
 }, {
-    description: 'Confirmed offer notice',
+    description: 'Confirmed offer notification',
     events: 'meta.base.transit.offer.confirm',
-    notices: 'confirmedOffer'
+    notifications: 'confirmedOffer'
 }];

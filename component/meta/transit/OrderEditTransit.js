@@ -7,7 +7,7 @@ const Base = require('evado-meta-base/workflow/Transit');
 
 module.exports = class OrderEditTransit extends Base {
 
-    async run () {
+    async execute () {
         await this.removeOrderOffers();
     }
 

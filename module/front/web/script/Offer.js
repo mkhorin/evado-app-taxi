@@ -1,6 +1,6 @@
 'use strict';
 
-Front.Offer = class Offer extends Front.LoadableContent {
+Front.Offer = class Offer extends Front.Loadable {
 
     init () {
         super.init();
@@ -139,7 +139,7 @@ Front.Offer = class Offer extends Front.LoadableContent {
     }
 };
 
-Front.OfferList = class OfferList extends Front.LoadableContent {
+Front.OfferList = class OfferList extends Front.Loadable {
 
     init () {
         super.init();
@@ -170,7 +170,7 @@ Front.OfferList = class OfferList extends Front.LoadableContent {
     }
 
     render (data) {
-        let items = data && data.items;
+        let items = data?.items;
         items = Array.isArray(items) ? items : [];
         items = items.map(this.renderItem, this).join('');
         const template = items ? 'list' : 'empty';
@@ -191,13 +191,13 @@ Front.OfferList = class OfferList extends Front.LoadableContent {
 
     onDone (data) {
         super.onDone(data);
-        this.pagination.setTotal(data && data.totalSize);
+        this.pagination.setTotal(data?.totalSize);
         this.$content.append(this.pagination.render());
-        this.translateContainer();
+        Jam.t(this.$container);
     }
 };
 
-Front.NewOffer = class NewOffer extends Front.LoadableContent {
+Front.NewOffer = class NewOffer extends Front.Loadable {
 
     init () {
         super.init();

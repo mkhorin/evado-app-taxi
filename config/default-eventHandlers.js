@@ -6,7 +6,7 @@ module.exports = {
         label: 'Client creation',
         description: 'Client object creation',
         config: {
-            Class: 'evado/component/handler/MetaClassInstantiation',
+            Class: 'evado/component/handler/MetadataClassInstantiation',
             className: 'client'
         }
     },
@@ -14,7 +14,7 @@ module.exports = {
         label: 'Driver creation',
         description: 'Driver object creation',
         config: {
-            Class: 'evado/component/handler/MetaClassInstantiation',
+            Class: 'evado/component/handler/MetadataClassInstantiation',
             className: 'driver'
         }
     },

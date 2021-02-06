@@ -8,7 +8,7 @@ module.exports = class SignUpForm extends Base {
         return {
             RULES: super.RULES.concat([
                 ['type', 'required'],
-                ['type', 'range', {range: ['client', 'driver']}]
+                ['type', 'range', {values: ['client', 'driver']}]
             ])
         };
     }

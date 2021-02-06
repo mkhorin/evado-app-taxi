@@ -1,6 +1,6 @@
 'use strict';
 
-Front.Order = class Order extends Front.LoadableContent {
+Front.Order = class Order extends Front.Loadable {
 
     init () {
         super.init();
@@ -119,7 +119,7 @@ Front.Order = class Order extends Front.LoadableContent {
     }
 };
 
-Front.OrderList = class OrderList extends Front.LoadableContent {
+Front.OrderList = class OrderList extends Front.Loadable {
 
     init () {
         super.init();
@@ -150,7 +150,7 @@ Front.OrderList = class OrderList extends Front.LoadableContent {
     }
 
     render (data) {
-        let items = data && data.items;
+        let items = data?.items;
         items = Array.isArray(items) ? items : [];
         items = items.map(this.renderItem, this).join('');
         const template = items ? 'list' : 'empty';
@@ -171,13 +171,13 @@ Front.OrderList = class OrderList extends Front.LoadableContent {
 
     onDone (data) {
         super.onDone(data);
-        this.pagination.setTotal(data && data.totalSize);
+        this.pagination.setTotal(data?.totalSize);
         this.$content.append(this.pagination.render());
-        this.translateContainer();
+        Jam.t(this.$container);
     }
 };
 
-Front.NewOrder = class NewOrder extends Front.LoadableContent {
+Front.NewOrder = class NewOrder extends Front.Loadable {
 
     init () {
         super.init();
@@ -255,7 +255,7 @@ Front.NewOrder = class NewOrder extends Front.LoadableContent {
     }
 };
 
-Front.ViewOrder = class ViewOrder extends Front.LoadableContent {
+Front.ViewOrder = class ViewOrder extends Front.Loadable {
 
     init () {
         super.init();

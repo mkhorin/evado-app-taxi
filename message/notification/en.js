@@ -12,5 +12,5 @@ module.exports = {
     'newOffer.text': 'New offer for {model.get.price} from {model.user.getTitle}',
 
     'newOrder.subject': 'New order',
-    'newOrder.text': 'Order from {model.user.getTitle} awaiting offers'
+    'newOrder.text': 'Order from {model.user.getTitle} awaits offers'
 };

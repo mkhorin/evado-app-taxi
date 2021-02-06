@@ -1,13 +1,9 @@
-:root {
-    --back-light: #f8f8f6;
-    --color-danger: #a94442;
-    --color-gray: #aaa;
-    --color-primary: #3c8dbc;
+body {
+    --back-light: #fafaf8;
+    --navbar-color: var(--light-warning);
+    --super-navbar-color: var(--dark-warning);
+    --sidebar-width: 0;
 }
-legend {
-    font-size: 15px;
-}
-
 .front-wrapper {
     background: none !important;
 }
@@ -25,7 +21,7 @@ legend {
     padding: 6px 12px;
 }
 .super-title {
-    margin-top: 30px;
+    margin-top: 2rem;
 }
 .subtitle {
     margin: 20px 0 30px;
@@ -54,13 +50,6 @@ legend {
 .commands {
     margin-bottom: 25px;
 }
-.signboard {
-    padding: 20px;
-    margin-top: 20px;
-    color: #884;
-    background: #ffe;
-    border-bottom: 2px solid #cca;
-}
 
 /* LOADABLE */
 
@@ -86,7 +75,6 @@ legend {
 
 .page {
     display: none;
-    padding: 20px 0 30px;
 }
 .page.active {
     display: block;
@@ -104,19 +92,14 @@ legend {
 .page .icon-title h1 {
     margin: 25px 0 10px;
 }
-.page .icon-title .thumbnail {
-    margin-right: 30px;
+.page .icon-title .img-thumbnail {
+    margin: 0 2rem 1rem 0;
 }
 
 /* BREADCRUMB */
 
 .breadcrumb {
-    padding-right: 145px;
-    border-left: 2px solid #3c8dbc;
-    border-radius: 0;
-}
-.breadcrumb + h1 {
-    margin-top: 30px;
+    background: #eff;
 }
 
 /* ACCOUNT */
@@ -132,11 +115,11 @@ legend {
 .user-toggle {
     cursor: pointer;
     color: #666;
-    line-height: 36px;
+    line-height: 3rem;
     border-left: 1px solid #ddd;
 }
 .user-toggle:hover {
-    color: var(--color-primary);
+    color: var(--primary);
 }
 .user-toggle .dropdown-toggle {
     padding: 0 12px;
@@ -184,10 +167,11 @@ legend {
     background: #fff;
 }
 .order-items .cell + .cell {
-    margin-top: 15px;
+    margin-top: 1rem;
 }
 .order-items .cell .value {
     display: inline-block;
+    font-weight: 500;
 }
 .order-items .cell label {
     margin: 0 5px 0 0;

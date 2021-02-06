@@ -7,7 +7,7 @@ const Base = require('evado-meta-base/workflow/Transit');
 
 module.exports = class OfferCancellationTransit extends Base {
 
-    async run () {
+    async execute () {
         const order = await this.model.related.resolve('order');
         await order.updateState('waiting');
     }
