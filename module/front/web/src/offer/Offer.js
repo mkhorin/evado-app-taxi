@@ -15,7 +15,7 @@ Front.Offer = class Offer extends Front.Loadable {
     }
 
     close () {
-        this.$modal.modal('hide');
+        this.modal?.hide();
     }
 
     getUrl (action = 'read') {
@@ -59,7 +59,7 @@ Front.Offer = class Offer extends Front.Loadable {
     onOffer (event, {offer, parentHandler}) {
         this.$content.html('');
         this.$modalError.addClass('hidden');
-        this.$modal.modal();
+        this.modal = Jam.showModal(this.$modal);
         this.offer = offer;
         this.parentHandler = parentHandler;
         this.load();

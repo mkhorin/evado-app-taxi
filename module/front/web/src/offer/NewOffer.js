@@ -43,7 +43,7 @@ Front.NewOffer = class NewOffer extends Front.Loadable {
     onNewOffer (event, {order}) {
         this.$content.html('');
         this.$modalError.addClass('hidden');
-        this.$modal.modal();
+        this.modal = Jam.showModal(this.$modal);
         this.order = order;
         this.load();
     }
@@ -62,7 +62,7 @@ Front.NewOffer = class NewOffer extends Front.Loadable {
     }
 
     onCreateDone (data) {
-        this.$modal.modal('hide');
+        this.modal.hide();
         this.front.getHandler('WaitingOrder').load();
     }
 

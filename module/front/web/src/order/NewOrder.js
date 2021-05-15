@@ -47,7 +47,7 @@ Front.NewOrder = class NewOrder extends Front.Loadable {
     onNewOrder (event) {
         this.$content.html('');
         this.$modalError.addClass('hidden');
-        this.$modal.modal();
+        this.modal = Jam.showModal(this.$modal);
         this.load();
     }
 
@@ -66,7 +66,7 @@ Front.NewOrder = class NewOrder extends Front.Loadable {
     }
 
     onCreateDone (data) {
-        this.$modal.modal('hide');
+        this.modal.hide();
         this.front.getHandler('OrderList').load();
     }
 

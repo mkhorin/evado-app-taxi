@@ -36,7 +36,7 @@ Front.ViewOrder = class ViewOrder extends Front.Loadable {
     onViewOrder (event, {order}) {
         this.$content.html('');
         this.$modalError.addClass('hidden');
-        this.$modal.modal();
+        this.modal = Jam.showModal(this.$modal);
         this.id = order;
         this.load();
     }
