@@ -27,10 +27,10 @@ module.exports = {
         type: 'allow',
         actions: ['read', 'update'],
         targets: {
-            type: 'class',
+            type: ['class', 'transition'],
             class: 'order'
         },
-        rule: 'creator'
+        rules: 'creator'
     }, {
         description: 'Client can delete his own orders in Draft or Waiting states',
         roles: 'client',
@@ -40,7 +40,7 @@ module.exports = {
             type: 'class',
             class: 'order'
         },
-        rule: 'orderDeletion'
+        rules: 'orderDeletion'
     }, {
         description: 'Client can read offers related to order',
         roles: 'client',
@@ -50,7 +50,7 @@ module.exports = {
             type: 'class',
             class: 'offer'
         },
-        rule: 'clientOffer'
+        rules: 'clientOffer'
     }, {
         description: 'Client can accept offers',
         roles: 'client',
@@ -80,7 +80,7 @@ module.exports = {
             type: 'class',
             class: 'offer'
         },
-        rule: 'offerCreation'
+        rules: 'offerCreation'
     }, {
         description: 'Edit own offer',
         roles: 'driver',
@@ -90,7 +90,7 @@ module.exports = {
             type: 'class',
             class: 'offer'
         },
-        rule: 'creator'
+        rules: 'creator'
     }, {
         description: 'Delete allowed own offers',
         roles: 'driver',
@@ -100,7 +100,7 @@ module.exports = {
             type: 'class',
             class: 'offer'
         },
-        rule: 'offerDeletion'
+        rules: 'offerDeletion'
     }, {
         description: 'Driver cannot accept offers',
         roles: 'driver',
@@ -121,7 +121,7 @@ module.exports = {
             class: 'offer',
             transition: 'confirm'
         },
-        rule: 'offerConfirmation'
+        rules: 'offerConfirmation'
     }, {
         description: 'Driver can read orders with his offers or waiting orders',
         roles: 'driver',
@@ -131,7 +131,7 @@ module.exports = {
             type: 'class',
             class: 'order'
         },
-        rule: 'driverOrder'
+        rules: 'driverOrder'
     }, {
         description: 'Driver cannot read client menu',
         roles: 'driver',
@@ -151,7 +151,7 @@ module.exports = {
             type: 'class',
             class: ['client', 'driver']
         },
-        rule: 'user'
+        rules: 'user'
     }, {
         description: 'Can read client or driver public data',
         roles: ['client', 'driver'],
