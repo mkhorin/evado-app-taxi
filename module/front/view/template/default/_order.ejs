@@ -1,92 +1,104 @@
+<template id="order">
+    <div class="page">
 
-<div class="page" data-page="order" data-handler="OrderPage">
+        <breadcrumbs>
+            <template #path>
+                <li class="breadcrumb-item">
+                    <a @click.prevent="toMain" href="#" data-t="">Main</a>
+                </li>
+                <li class="breadcrumb-item" data-t="meta">Order</li>
+            </template>
+        </breadcrumbs>
 
-    <div class="order loadable-container" data-handler="Order">
+        <div class="loadable-container">
+            <template v-show="!loading">
 
-        <template data-id="order">
-            <div class="page-head">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#" data-action="main" data-t="">Main</a></li>
-                    <li class="breadcrumb-item"><a href="#" data-action="orders" data-t="meta">Orders</a></li>
-                    <li class="breadcrumb-item" data-t="">#{{_id}}</li>
-                </ol>
+                <div class="form">
+                    <div class="form-group row">
+                        <label class="col-4 col-form-label">ID</label>
+                        <div class="col-8">
+                            <div class="form-control-plaintext">{{id}}</div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-4 col-form-label" data-t="meta">State</label>
+                        <div class="col-8">
+                            <div class="form-control-plaintext">
+                                <b data-t="meta">{{stateTitle}}</b>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-4 col-form-label" data-t="">Departure address</label>
+                        <div class="col-8">
+                            <div class="form-control-plaintext">{{start}}</div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-4 col-form-label" data-t="">Destination address</label>
+                        <div class="col-8">
+                            <div class="form-control-plaintext">{{end}}</div>
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label class="col-4 col-form-label" data-t="">Desired price</label>
+                        <div class="col-8">
+                            <div class="form-control-plaintext">
+                                <b>{{price}}</b>
+                            </div>
+                        </div>
+                    </div>
+                    <div v-if="info" class="form-group row">
+                        <label class="col-4 col-form-label" data-t="meta">Additional info</label>
+                        <div class="col-8">
+                            <div class="form-control-plaintext">{{info}}</div>
+                        </div>
+                    </div>
+                    <div v-if="isDriver()" class="form-group row">
+                        <label class="col-4 col-form-label" data-t="meta">Client</label>
+                        <div class="col-8">
+                            <div class="form-control-plaintext">{{clientName}}</div>
+                        </div>
+                    </div>
+                    <div v-if="isClient()" class="form-group row">
+                        <div class="offset-4 col-8">
+                            <button v-if="editable" @click="onReady" class="btn-success btn" type="button">
+                                <span data-t="meta">Ready</span>
+                            </button>
+                            <button v-if="editable || waiting" @click="onDelete" class="btn-danger btn" type="button">
+                                <span data-t="">Delete</span>
+                            </button>
+                            <button v-if="inProgress" @click="onComplete" class="btn-success btn" type="button">
+                                <span data-t="">Complete</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="block mt-4">
+                    <h3 class="block-title" data-t="">Driver offers</h3>
+
+                    <div v-if="isDriver()" class="text-center mb-4">
+                        <button @click="onNewOffer" type="button" class="btn-success btn">
+                            <span data-t="">Create new offer</span>
+                        </button>
+                    </div>
+                    <order-offers :order="order" ref="offers"></order-offers>
+                </div>
+            </template>
+
+            <div v-show="loading" class="loader">
+                <i class="fa fa-spinner fa-spin"></i>
             </div>
+        </div>
 
-            <div class="form">
-                <div class="form-group row">
-                    <label class="col-4 col-form-label" data-t="meta">State</label>
-                    <div class="col-8">
-                        <div class="form-control-plaintext"><b data-t="meta">{{state}}</b></div>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-4 col-form-label" data-t="">Departure address</label>
-                    <div class="col-8">
-                        <div class="form-control-plaintext">{{start}}</div>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-4 col-form-label" data-t="">Destination address</label>
-                    <div class="col-8">
-                        <div class="form-control-plaintext">{{end}}</div>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-4 col-form-label" data-t="">Desired price</label>
-                    <div class="col-8">
-                        <div class="form-control-plaintext"><b>{{price}}</b></div>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-4 col-form-label" data-t="meta">Additional info</label>
-                    <div class="col-8">
-                        <div class="form-control-plaintext">{{info}}</div>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <div class="offset-4 col-8">
-                        {{ready}}
-                        {{deletion}}
-                        {{complete}}
-                    </div>
-                </div>
-            </div>
-
-            <div class="block mt-4">
-                <h3 class="block-title" data-t="">Driver offers</h3>
-                <%- include('./_orderOffers') %>
-            </div>
-        </template>
-
-        <template data-id="ready">
-            <button class="btn-success btn" type="button" data-command="readyOrder">
-                <span data-t="meta">Ready</span>
-            </button>
-        </template>
-
-        <template data-id="draft">
-            <button class="btn-primary btn" type="button" data-command="draftOrder">
-                <span data-t="meta">Draft</span>
-            </button>
-        </template>
-
-        <template data-id="deletion">
-            <button class="btn-danger btn" type="button" data-command="deleteOrder">
-                <span data-t="">Delete</span>
-            </button>
-        </template>
-
-        <template data-id="complete">
-            <button class="btn-success btn" type="button" data-command="completeOrder">
-                <span data-t="">Complete</span>
-            </button>
-        </template>
-
-        <template data-id="error">
-            <div class="alert-danger alert">{{text}}</div>
-        </template>
-
-        <div class="loadable-content"></div>
-        <div class="loader"><i class="fa fa-spinner fa-spin"></i></div>
+        <modal-dialog ref="newOfferModal" title="New offer" size="lg">
+            <template #body>
+                <offer-form ref="newOfferForm"></offer-form>
+            </template>
+            <template #footer>
+                <button @click="onCreateOffer" class="btn-success btn" data-t="">Create</button>
+            </template>
+        </modal-dialog>
     </div>
-</div>
+</template>

@@ -1,0 +1,54 @@
+<template id="order-view">
+    <div class="loadable-container">
+        <template v-show="!loading">
+            <div class="form">
+                <div class="form-attr form-group row">
+                    <label class="col-md-3 col-form-label">ID</label>
+                    <div class="col-md-9">
+                        <p class="form-control-plaintext">{{id}}</p>
+                    </div>
+                </div>
+                <div class="form-attr form-group row">
+                    <label class="col-md-3 col-form-label" data-t="meta">State</label>
+                    <div class="col-md-9">
+                        <p class="form-control-plaintext"><b>{{stateTitle}}</b></p>
+                    </div>
+                </div>
+                <div class="form-attr form-group row">
+                    <label class="col-md-3 col-form-label" data-t="">Departure address</label>
+                    <div class="col-md-9">
+                        <p class="form-control-plaintext">{{start}}</p>
+                    </div>
+                </div>
+                <div class="form-attr form-group row">
+                    <label class="col-md-3 col-form-label" data-t="">Destination address</label>
+                    <div class="col-md-9">
+                        <p class="form-control-plaintext">{{end}}</p>
+                    </div>
+                </div>
+                <div class="form-attr form-group row">
+                    <label class="col-md-3 col-form-label" data-t="">Desired price</label>
+                    <div class="col-md-9">
+                        <p class="form-control-plaintext">{{price}}</p>
+                    </div>
+                </div>
+                <div v-if="info" class="form-attr form-group row">
+                    <label class="col-md-3 col-form-label" data-t="meta">Additional info</label>
+                    <div class="col-md-9">
+                        <p class="form-control-plaintext">{{info}}</p>
+                    </div>
+                </div>
+                <div class="form-attr form-group row">
+                    <label class="col-md-3 col-form-label" data-t="meta">Client</label>
+                    <div class="col-md-9">
+                        <p class="form-control-plaintext">{{clientName}}</p>
+                    </div>
+                </div>
+            </div>
+        </template>
+
+        <div v-show="loading" class="loader">
+            <i class="fa fa-spinner fa-spin"></i>
+        </div>
+    </div>
+</template>

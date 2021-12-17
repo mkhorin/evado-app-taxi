@@ -133,6 +133,17 @@ module.exports = {
         },
         rules: 'driverOrder'
     }, {
+        description: 'Driver can close his own offer',
+        roles: 'driver',
+        type: 'allow',
+        actions: 'update',
+        targets: {
+            type: 'transition',
+            class: 'offer',
+            transition: 'close'
+        },
+        rules: 'creator'
+    }, {
         description: 'Driver cannot read client menu',
         roles: 'driver',
         type: 'deny',

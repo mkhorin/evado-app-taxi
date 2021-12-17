@@ -1,96 +1,73 @@
-<div class="offer-modal modal" tabindex="-1" role="dialog">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" data-t="meta">Offer</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body">
-                <div class="modal-error alert-danger alert hidden"></div>
-                <div class="loadable-container" data-handler="Offer">
+<template id="offer">
+    <div class="loadable-container">
+        <template v-show="!loading">
 
-                    <template data-id="offer">
-                        <div class="form">
-                            <div class="form-attr form-group row">
-                                <label class="col-md-3 col-form-label" data-t="meta">State</label>
-                                <div class="col-md-9">
-                                    <p class="form-control-plaintext"><b data-t="meta">{{state}}</b></p>
-                                </div>
-                            </div>
-                            <div class="form-attr form-group row">
-                                <label class="col-md-3 col-form-label" data-t="meta">Price</label>
-                                <div class="col-md-9">
-                                    <p class="form-control-plaintext">{{price}}</p>
-                                </div>
-                            </div>
-                            <div class="form-attr form-group row">
-                                <label class="col-md-3 col-form-label" data-t="meta">Additional info</label>
-                                <div class="col-md-9">
-                                    <p class="form-control-plaintext">{{info}}</p>
-                                </div>
-                            </div>
-                            <div class="form-attr form-group row">
-                                <label class="col-md-3 col-form-label" data-t="meta">Driver</label>
-                                <div class="col-md-9">
-                                    <p class="form-control-plaintext">{{driver}}</p>
-                                </div>
-                            </div>
-                            <div class="form-attr form-group row">
-                                <label class="col-md-3 col-form-label" data-t="meta">Order</label>
-                                <div class="col-md-9">
-                                    <p class="form-control-plaintext">
-                                        <a href="#" data-action="viewOrder" data-id="{{order}}">#{{order}}</a>
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <div class="offset-md-3 col-md-9">
-                                    {{accept}}
-                                    {{confirm}}
-                                    {{deletion}}
-                                    {{complete}}
-                                </div>
-                            </div>
-                        </div>
-                    </template>
+            <div class="form">
+                <div class="form-attr form-group row">
+                    <label class="col-md-3 col-form-label">ID</label>
+                    <div class="col-md-9">
+                        <p class="form-control-plaintext">{{id}}</p>
+                    </div>
+                </div>
+                <div class="form-attr form-group row">
+                    <label class="col-md-3 col-form-label" data-t="meta">State</label>
+                    <div class="col-md-9">
+                        <p class="form-control-plaintext"><b data-t="meta">{{stateTitle}}</b></p>
+                    </div>
+                </div>
+                <div class="form-attr form-group row">
+                    <label class="col-md-3 col-form-label" data-t="meta">Price</label>
+                    <div class="col-md-9">
+                        <p class="form-control-plaintext">{{price}}</p>
+                    </div>
+                </div>
+                <div class="form-attr form-group row">
+                    <label class="col-md-3 col-form-label" data-t="meta">Additional info</label>
+                    <div class="col-md-9">
+                        <p class="form-control-plaintext">{{info}}</p>
+                    </div>
+                </div>
+                <div class="form-attr form-group row">
+                    <label class="col-md-3 col-form-label" data-t="meta">Driver</label>
+                    <div class="col-md-9">
+                        <p class="form-control-plaintext">{{driverName}}</p>
+                    </div>
+                </div>
+                <div class="form-attr form-group row">
+                    <label class="col-md-3 col-form-label" data-t="meta">Order</label>
+                    <div class="col-md-9">
+                        <p class="form-control-plaintext">
+                            <a @click.prevent="onOrder(order)" href="#">#{{order}}</a>
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <div class="offset-md-3 col-md-9">
 
-                    <template data-id="accept">
-                        <button class="btn-success btn" type="button" data-command="acceptOffer">
-                            <span data-t="meta">Accept</span>
-                        </button>
-                    </template>
+                        <template v-if="isClient()">
+                            <button v-if="newly" @click="onAccept" class="btn-success btn" type="button">
+                                <span data-t="meta">Accept</span>
+                            </button>
+                        </template>
 
-                    <template data-id="confirm">
-                        <button class="btn-success btn" type="button" data-command="confirmOffer">
-                            <span data-t="meta">Confirm</span>
-                        </button>
-                    </template>
-
-                    <template data-id="deletion">
-                        <button class="btn-danger btn" type="button" data-command="deleteOffer">
-                            <span data-t="">Delete</span>
-                        </button>
-                    </template>
-
-                    <template data-id="complete">
-                        <button class="btn-success btn" type="button" data-command="completeOffer">
-                            <span data-t="">Complete</span>
-                        </button>
-                    </template>
-
-                    <template data-id="error">
-                        <div class="alert-danger alert">{{text}}</div>
-                    </template>
-
-                    <div class="loadable-content"></div>
-                    <div class="loader"><i class="fa fa-spinner fa-spin"></i></div>
+                        <template v-if="isDriver()">
+                            <button v-if="accepted" @click="onConfirm" class="btn-success btn" type="button">
+                                <span data-t="meta">Confirm</span>
+                            </button>
+                            <button v-if="newly || accepted" @click="onDelete" class="btn-danger btn" type="button">
+                                <span data-t="">Delete</span>
+                            </button>
+                            <button v-if="inProgress" @click="onComplete" class="btn-success btn" type="button">
+                                <span data-t="">Complete</span>
+                            </button>
+                        </template>
+                    </div>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button class="btn-outline-secondary btn" data-bs-dismiss="modal">
-                    <span data-t="">Close</span>
-                </button>
-            </div>
+        </template>
+
+        <div v-show="loading" class="loader">
+            <i class="fa fa-spinner fa-spin"></i>
         </div>
     </div>
-</div>
+</template>

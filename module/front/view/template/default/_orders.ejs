@@ -1,68 +1,72 @@
+<template id="orders">
+    <div class="page">
 
-<div class="page" data-page="orders" data-handler="OrdersPage">
+        <breadcrumbs>
+            <template #path>
+                <li class="breadcrumb-item">
+                    <a @click.prevent="toMain" href="#" data-t="">Main</a>
+                </li>
+                <li class="breadcrumb-item" data-t="meta">Orders</li>
+            </template>
+        </breadcrumbs>
 
-    <div class="page-head">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="#" data-action="main" data-t="">Main</a></li>
-            <li class="breadcrumb-item" data-t="meta">Orders</li>
-        </ol>
-    </div>
+        <h1 data-t="meta">My orders</h1>
 
-    <h1 data-t="meta">My orders</h1>
+        <div class="loadable-container">
 
+            <div class="text-center mb-4">
+                <button @click="onNew" type="button" class="btn-success btn">
+                    <span data-t="">Create new order</span>
+                </button>
+            </div>
 
-    <div class="text-center mb-4">
-        <button type="button" class="btn-success btn" data-action="newOrder">
-            <span data-t="">Create new order</span>
-        </button>
-    </div>
-
-    <div class="order-list loadable-container" data-handler="OrderList">
-
-        <template data-id="list">
-            <div class="order-items">{{items}}</div>
-        </template>
-
-        <template data-id="item">
-            <div class="order-item" data-id="{{_id}}">
-                <div class="cell">
-                    <label data-t="meta">State</label>
-                    <div class="value"><b data-t="meta">{{state}}</b></div>
-                </div>
-                <div class="cell">
-                    <label data-t="">ID</label>
-                    <div class="value">
-                        <a href="#" data-action="order" title="{{_id}}">#{{_id}}</a>
+            <div class="order-items">
+                <div v-for="item of items" class="order-item">
+                    <div class="cell">
+                        <label data-t="meta">State</label>
+                        <div class="value">
+                            <b>{{item.stateTitle}}</b>
+                        </div>
+                    </div>
+                    <div class="cell">
+                        <label data-t="">ID</label>
+                        <div class="value">
+                            <a @click.prevent="toOrder(item.id)" href="#">#{{item.id}}</a>
+                        </div>
+                    </div>
+                    <div class="cell">
+                        <label data-t="">Departure</label>
+                        <div class="value">{{item.start}}</div>
+                    </div>
+                    <div class="cell">
+                        <label data-t="">Destination</label>
+                        <div class="value">{{item.end}}</div>
+                    </div>
+                    <div class="cell">
+                        <label data-t="meta">Price</label>
+                        <div class="value">{{item.price}}</div>
                     </div>
                 </div>
-                <div class="cell">
-                    <label data-t="">Departure</label>
-                    <div class="value">{{start}}</div>
-                </div>
-                <div class="cell">
-                    <label data-t="">Destination</label>
-                    <div class="value">{{end}}</div>
-                </div>
-                <div class="cell">
-                    <label data-t="meta">Price</label>
-                    <div class="value">{{price}}</div>
-                </div>
             </div>
-        </template>
 
-        <%- include('./_pagination') %>
+            <pagination></pagination>
 
-        <template data-id="empty">
-            <div class="alert-warning alert">
+            <div v-show="!loading && empty" class="alert-warning alert">
                 <span data-t="">You have no orders</span>
             </div>
-        </template>
 
-        <template data-id="error">
-            <div class="alert-danger alert">{{text}}</div>
-        </template>
+            <div v-show="loading" class="loader">
+                <i class="fa fa-spinner fa-spin"></i>
+            </div>
+        </div>
 
-        <div class="loadable-content"></div>
-        <div class="loader"><i class="fa fa-spinner fa-spin"></i></div>
+        <modal-dialog ref="newModal" title="New order" size="lg">
+            <template #body>
+                <order-form ref="newForm"></order-form>
+            </template>
+            <template #footer>
+                <button @click="onCreate" class="btn-success btn" data-t="">Create</button>
+            </template>
+        </modal-dialog>
     </div>
-</div>
+</template>

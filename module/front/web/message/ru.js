@@ -20,6 +20,8 @@ Object.assign(Jam.I18n.defaults, {
     'Destination address': 'Адрес назначения',
     'Driver offers': 'Предложения водителей',
 
+    'Is the trip over?': 'Поездка закончена?',
+
     'Main': 'Главная',
 
     'New offer': 'Новое предложение',
@@ -33,5 +35,5 @@ Object.assign(Jam.I18n.defaults, {
     'Taxi Ordering Network': 'Сеть заказа такси',
 
     'You have no offers': 'У вас нет предложений',
-    'You have no orders': 'У вас нет заказов',
+    'You have no orders': 'У вас нет заказов'
 });

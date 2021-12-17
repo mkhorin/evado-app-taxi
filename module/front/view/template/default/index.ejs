@@ -1,39 +1,65 @@
 <%
 layout(_view.get('_layout/content'));
 
-script('front/vendor/front.min.js');
-script('front/script/module.js');
+script('front/vendor/vue/vue.js');
 
-const dataUrl = _url('/api/base/data/');
-const fileUrl = _url('/api/base/file/');
-const metaUrl = _url('/api/base/meta/');
+script('front/script/modelForm.js');
+script('front/script/offerForm.js');
+script('front/script/orderForm.js');
 
-const isGuest = _controller.user.isGuest();
-const isClient = !isGuest && _controller.user.hasAssignment('client');
-const isDriver = !isGuest && _controller.user.hasAssignment('driver');
+script('front/script/breadcrumbs.js');
+script('front/script/mainPage.js');
+script('front/script/mixin.js');
+script('front/script/modalDialog.js');
+script('front/script/modelFormAttr.js');
+script('front/script/modelFormString.js');
+script('front/script/modelFormText.js');
+script('front/script/offer.js');
+script('front/script/offers.js');
+script('front/script/order.js');
+script('front/script/orders.js');
+script('front/script/orderOffers.js');
+script('front/script/orderView.js');
+script('front/script/pagination.js');
+script('front/script/waitingOrders.js');
+
+script('front/script/front.js');
+
+const user = _controller.user;
+const isGuest = user.isGuest();
+const isClient = !isGuest && user.hasAssignment('client');
+const isDriver = !isGuest && user.hasAssignment('driver');
 %>
+
+<%- include('./_breadcrumbs') %>
+<%- include('./_mainPage', {isGuest, isClient, isDriver}) %>
+<%- include('./_modalDialog') %>
+<%- include('./_modelForm') %>
+<%- include('./_modelFormString') %>
+<%- include('./_modelFormText') %>
+<%- include('./_offer') %>
+<%- include('./_offers') %>
+<%- include('./_order') %>
+<%- include('./_orders') %>
+<%- include('./_orderOffers') %>
+<%- include('./_orderView') %>
+<%- include('./_pagination') %>
+<%- include('./_waitingOrders') %>
 
 <%- include(_view.get('_part/signboard')) %>
 
-<div class="front"
-     data-guest="<%- isGuest %>"
+<div id="front"
      data-client="<%- isClient %>"
      data-driver="<%- isDriver %>"
-     data-user="<%- _controller.user.getId() %>"
-     data-data-url="<%- dataUrl %>"
-     data-meta-url="<%- metaUrl %>">
+     data-user-id="<%- user.getId() %>"
+     data-auth-url="<%- _url('/auth/sign-in?returnUrl=/front') %>"
+     data-data-url="<%- _url('/api/base/data') %>"
+     data-file-url="<%- _url('/api/base/file') %>"
+     data-meta-url="<%- _url('/api/base/meta') %>"
+     data-thumbnail-url="<%- _url('/api/base/file/thumbnail') %>"
+     data-csrf="<%- _controller.getCsrfToken() %>">
 
-    <%- include('./_main', {isGuest, isClient, isDriver}) %>
-
-    <%- include('./_offers') %>
-    <%- include('./_offer') %>
-    <%- include('./_newOffer') %>
-
-    <%- include('./_orders') %>
-    <%- include('./_order') %>
-    <%- include('./_newOrder') %>
-    <%- include('./_viewOrder') %>
-
-    <%- include('./_waitingOrders') %>
-    <%- include('./_waitingOrder') %>
+    <keep-alive include="main">
+        <componen :is="activePage" v-bind="activePageProps"></componen>
+    </keep-alive>
 </div>
