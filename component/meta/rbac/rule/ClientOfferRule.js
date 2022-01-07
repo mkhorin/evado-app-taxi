@@ -1,9 +1,9 @@
 /**
  * @copyright Copyright (c) 2020 Maxim Khorin (maksimovichu@gmail.com)
+ *
+ * Client can read offer related to his order
  */
 'use strict';
-
-// client can read offer related to his order
 
 const Base = require('evado/component/meta/rbac/rule/BaseRule');
 
@@ -19,7 +19,10 @@ module.exports = class ClientOfferRule extends Base {
         return this.isUser(client.get('user'));
     }
 
-    async getObjectFilter () { // filter objects in list
+    /**
+     * Filter objects in list
+     */
+    async getObjectFilter () {
         const meta = this.getBaseMeta();
         const client = await meta.getClass('client').find({user: this.getUserId()}).id();
         const orders = await meta.getClass('order').find({client}).ids();
