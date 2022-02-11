@@ -1,4 +1,4 @@
-# Evado Taxi Network App
+# Taxi Network App
 
 A web application built on [Evado Declarative Framework](https://github.com/mkhorin/evado) 
 helps users to provide each other with taxi services. 
