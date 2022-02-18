@@ -1,7 +1,7 @@
 # Taxi Network App
 
-A web application built on [Evado Declarative Framework](https://github.com/mkhorin/evado) 
-helps users to provide each other with taxi services. 
+A web application built on [Evado Declarative Framework](https://github.com/mkhorin/evado)
+helps users to provide each other with taxi services.
 
 Basic scheme of user-passenger actions:
 
@@ -54,7 +54,7 @@ node console/start
 ```
 
 ## Usage
- 
+
 Web interface `http://localhost:3000`
 
 Sign in as client:

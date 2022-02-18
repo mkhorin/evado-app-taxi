@@ -301,6 +301,6 @@ module.exports = {
     },
 
     // rules to auto-bind users to roles
-    assignmentRules: {        
+    assignmentRules: {
     }
 };
