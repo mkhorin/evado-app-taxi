@@ -1,9 +1,9 @@
 /**
  * @copyright Copyright (c) 2020 Maxim Khorin (maksimovichu@gmail.com)
+ *
+ * Client can only delete his own order in Draft or Waiting states
  */
 'use strict';
-
-// client can only delete his own order in Draft or Waiting states
 
 const Base = require('evado/component/meta/rbac/rule/BaseRule');
 

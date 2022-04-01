@@ -1,9 +1,9 @@
 /**
  * @copyright Copyright (c) 2020 Maxim Khorin (maksimovichu@gmail.com)
+ *
+ * Driver can only confirm offer for waiting orders
  */
 'use strict';
-
-// driver can only confirm offer for waiting orders
 
 const Base = require('evado/component/meta/rbac/rule/BaseRule');
 

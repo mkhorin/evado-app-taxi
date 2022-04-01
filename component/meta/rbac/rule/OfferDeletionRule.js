@@ -1,9 +1,9 @@
 /**
  * @copyright Copyright (c) 2020 Maxim Khorin (maksimovichu@gmail.com)
+ *
+ * Driver can only delete his own offer in New or Accepted states
  */
 'use strict';
-
-// driver can only delete his own offer in New or Accepted states
 
 const Base = require('evado/component/meta/rbac/rule/BaseRule');
 
