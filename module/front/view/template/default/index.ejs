@@ -60,6 +60,6 @@ const isDriver = !isGuest && user.hasAssignment('driver');
      data-csrf="<%- _controller.getCsrfToken() %>">
 
     <keep-alive include="main">
-        <componen :is="activePage" v-bind="activePageProps"></componen>
+        <component :is="activePage" v-bind="activePageProps"></component>
     </keep-alive>
 </div>
