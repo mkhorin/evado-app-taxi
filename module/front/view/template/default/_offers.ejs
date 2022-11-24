@@ -1,75 +1,75 @@
 <template id="offers">
-    <div class="page">
+  <div class="page">
 
-        <breadcrumbs>
-            <template #path>
-                <li class="breadcrumb-item">
-                    <a @click.prevent="toMain" href="#" data-t="">Main</a>
-                </li>
-                <li class="breadcrumb-item" data-t="meta">Offers</li>
-            </template>
-        </breadcrumbs>
+    <breadcrumbs>
+      <template #path>
+        <li class="breadcrumb-item">
+          <a @click.prevent="toMain" href="#" data-t="">Main</a>
+        </li>
+        <li class="breadcrumb-item" data-t="meta">Offers</li>
+      </template>
+    </breadcrumbs>
 
-        <h1 data-t="meta">My offers</h1>
+    <h1 data-t="meta">My offers</h1>
 
-        <div class="loadable-container">
+    <div class="loadable-container">
 
-            <div class="offer-items">
-                <div v-for="item of items" :key="item.id" class="offer-item">
-                    <div class="order-item-agreed cell">
-                        <label data-t="meta">State</label>
-                        <div class="value">
-                            <b>{{item.stateTitle}}</b>
-                        </div>
-                    </div>
-                    <div class="order-item-id cell">
-                        <label data-t="">ID</label>
-                        <div class="value">
-                            <a @click.prevent="onOffer(item.id)" href="#">#{{item.id}}</a>
-                        </div>
-                    </div>
-                    <div class="order-item-cancelled cell">
-                        <label data-t="meta">Price</label>
-                        <div class="value">{{item.price}}</div>
-                    </div>
-                    <div class="order-item-id cell">
-                        <label data-t="meta">Order</label>
-                        <div class="value">
-                            <a @click.prevent="onOrder(item.order)" href="#">#{{item.order}}</a>
-                        </div>
-                    </div>
-                </div>
+      <div class="offer-items">
+        <div v-for="item of items" :key="item.id" class="offer-item">
+          <div class="order-item-agreed cell">
+            <label data-t="meta">State</label>
+            <div class="value">
+              <b>{{item.stateTitle}}</b>
             </div>
-
-            <pagination @change="load"></pagination>
-
-            <div v-show="!loading && empty" class="alert-warning alert">
-                <span data-t="">You have no offers</span>
+          </div>
+          <div class="order-item-id cell">
+            <label data-t="">ID</label>
+            <div class="value">
+              <a @click.prevent="onOffer(item.id)" href="#">#{{item.id}}</a>
             </div>
-
-            <div v-show="loading" class="loader">
-                <i class="fa fa-spinner fa-spin"></i>
+          </div>
+          <div class="order-item-cancelled cell">
+            <label data-t="meta">Price</label>
+            <div class="value">{{item.price}}</div>
+          </div>
+          <div class="order-item-id cell">
+            <label data-t="meta">Order</label>
+            <div class="value">
+              <a @click.prevent="onOrder(item.order)" href="#">#{{item.order}}</a>
             </div>
+          </div>
         </div>
+      </div>
 
-        <modal-dialog ref="offerModal" title="Offer" size="lg">
-            <template #body>
-                <offer
-                    @change="onChangeOffer"
-                    @order="onOrder"
-                    :offer="activeOffer"
-                    ref="offer">
-                </offer>
-            </template>
-        </modal-dialog>
+      <pagination @change="load"></pagination>
 
-        <modal-dialog ref="orderModal" title="Order" size="md">
-            <template #body>
-                <order-view
-                    :order="activeOrder"
-                    ref="order">
-                </order-view>
-            </template>
-        </modal-dialog>
+      <div v-show="!loading && empty" class="alert-warning alert">
+        <span data-t="">You have no offers</span>
+      </div>
+
+      <div v-show="loading" class="loader">
+        <i class="fa fa-spinner fa-spin"></i>
+      </div>
     </div>
+
+    <modal-dialog ref="offerModal" title="Offer" size="lg">
+      <template #body>
+        <offer
+          @change="onChangeOffer"
+          @order="onOrder"
+          :offer="activeOffer"
+          ref="offer">
+        </offer>
+      </template>
+    </modal-dialog>
+
+    <modal-dialog ref="orderModal" title="Order" size="md">
+      <template #body>
+        <order-view
+          :order="activeOrder"
+          ref="order">
+        </order-view>
+      </template>
+    </modal-dialog>
+  </div>
 </template>

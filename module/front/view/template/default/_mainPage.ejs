@@ -1,29 +1,29 @@
 <template id="main-page">
-    <div class="page">
+  <div class="page">
 
-        <h1 data-t="">Taxi Ordering Network</h1>
+    <h1 data-t="">Taxi Ordering Network</h1>
 
-        <% if (isGuest || isClient) { %>
-        <%- include(_view.get('default/_mainClient')) %>
-        <% } %>
+    <% if (isGuest || isClient) { %>
+    <%- include(_view.get('default/_mainClient')) %>
+    <% } %>
 
-        <% if (isGuest || isDriver) { %>
-        <%- include(_view.get('default/_mainDriver')) %>
-        <% } %>
+    <% if (isGuest || isDriver) { %>
+    <%- include(_view.get('default/_mainDriver')) %>
+    <% } %>
 
-        <div class="mt-4">
-            <% if (isGuest) { %>
-            <a href="auth/sign-in?returnUrl=/front" class="btn-primary btn" data-t="">Sign in or Register</a>
-            <% } else if (isClient) { %>
-            <button @click="toOrders" class="btn-primary btn" data-t="meta">My orders</button>
-            <% } else if (isDriver) { %>
-            <button @click="toOffers" class="btn-primary btn" data-t="meta">My offers</button>
-            <button @click="toWaitingOrders" class="btn-danger btn" data-t="meta">Waiting orders</button>
-            <% } else { %>
-            <div class="alert alert-warning">
-                <span data-t="">Please login as client or driver to continue</span>
-            </div>
-            <% } %>
-        </div>
+    <div class="mt-4">
+      <% if (isGuest) { %>
+      <a href="auth/sign-in?returnUrl=/front" class="btn-primary btn" data-t="">Sign in or Register</a>
+      <% } else if (isClient) { %>
+      <button @click="toOrders" class="btn-primary btn" data-t="meta">My orders</button>
+      <% } else if (isDriver) { %>
+      <button @click="toOffers" class="btn-primary btn" data-t="meta">My offers</button>
+      <button @click="toWaitingOrders" class="btn-danger btn" data-t="meta">Waiting orders</button>
+      <% } else { %>
+      <div class="alert alert-warning">
+        <span data-t="">Please login as client or driver to continue</span>
+      </div>
+      <% } %>
     </div>
+  </div>
 </template>

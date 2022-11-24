@@ -1,55 +1,55 @@
 <template id="waiting-orders">
-    <div class="page">
+  <div class="page">
 
-        <breadcrumbs>
-            <template #path>
-                <li class="breadcrumb-item">
-                    <a @click.prevent="toMain" href="#" data-t="">Main</a>
-                </li>
-                <li class="breadcrumb-item" data-t="meta">Orders</li>
-            </template>
-        </breadcrumbs>
+    <breadcrumbs>
+      <template #path>
+        <li class="breadcrumb-item">
+          <a @click.prevent="toMain" href="#" data-t="">Main</a>
+        </li>
+        <li class="breadcrumb-item" data-t="meta">Orders</li>
+      </template>
+    </breadcrumbs>
 
-        <h1 data-t="meta">Waiting orders</h1>
+    <h1 data-t="meta">Waiting orders</h1>
 
-        <div class="loadable-container">
+    <div class="loadable-container">
 
-            <div class="order-items">
-                <div v-for="item of items" class="order-item">
-                    <div class="cell">
-                        <label data-t="">ID</label>
-                        <div class="value">
-                            <a @click.prevent="toOrder(item.id)" href="#">#{{item.id}}</a>
-                        </div>
-                    </div>
-                    <div class="cell">
-                        <label data-t="">Departure</label>
-                        <div class="value">{{item.start}}</div>
-                    </div>
-                    <div class="cell">
-                        <label data-t="">Destination</label>
-                        <div class="value">{{item.end}}</div>
-                    </div>
-                    <div class="cell">
-                        <label data-t="meta">Price</label>
-                        <div class="value">{{item.price}}</div>
-                    </div>
-                    <div class="cell">
-                        <label data-t="meta">Client</label>
-                        <div class="value">{{item.clientName}}</div>
-                    </div>
-                </div>
+      <div class="order-items">
+        <div v-for="item of items" class="order-item">
+          <div class="cell">
+            <label data-t="">ID</label>
+            <div class="value">
+              <a @click.prevent="toOrder(item.id)" href="#">#{{item.id}}</a>
             </div>
-
-            <pagination @change="load"></pagination>
-
-            <div v-show="!loading && empty" class="alert-warning alert">
-                <span data-t="">No orders found</span>
-            </div>
-
-            <div v-show="loading" class="loader">
-                <i class="fa fa-spinner fa-spin"></i>
-            </div>
+          </div>
+          <div class="cell">
+            <label data-t="">Departure</label>
+            <div class="value">{{item.start}}</div>
+          </div>
+          <div class="cell">
+            <label data-t="">Destination</label>
+            <div class="value">{{item.end}}</div>
+          </div>
+          <div class="cell">
+            <label data-t="meta">Price</label>
+            <div class="value">{{item.price}}</div>
+          </div>
+          <div class="cell">
+            <label data-t="meta">Client</label>
+            <div class="value">{{item.clientName}}</div>
+          </div>
         </div>
+      </div>
+
+      <pagination @change="load"></pagination>
+
+      <div v-show="!loading && empty" class="alert-warning alert">
+        <span data-t="">No orders found</span>
+      </div>
+
+      <div v-show="loading" class="loader">
+        <i class="fa fa-spinner fa-spin"></i>
+      </div>
     </div>
+  </div>
 </template>

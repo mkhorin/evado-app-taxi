@@ -1,46 +1,46 @@
 <template id="order-offers">
-    <div class="loadable-container">
+  <div class="loadable-container">
 
-        <div v-if="!empty" class="offer-items">
-            <div v-for="item of items" class="offer-item">
-                <p>
-                    <label data-t="meta">State</label>
-                    <b>{{item.stateTitle}}</b>
-                </p>
-                <p>
-                    <label data-t="">ID</label>
-                    <a @click.prevent="onOffer(item.id)" href="#">{{item.id}}</a>
-                </p>
-                <p>
-                    <label data-t="meta">Price</label>
-                    {{item.price}}
-                </p>
-                <p>
-                    <label data-t="meta">Driver</label>
-                    {{item.driver}}
-                </p>
-            </div>
-        </div>
-
-        <pagination @change="load"></pagination>
-
-        <div v-show="!loading && empty" class="alert-warning alert">
-            <span data-t="">No offers yet</span>
-        </div>
-
-        <div v-show="loading" class="loader">
-            <i class="fa fa-spinner fa-spin"></i>
-        </div>
-
-        <modal-dialog ref="offerModal" title="Offer" size="lg">
-            <template #body>
-                <offer
-                    @change="onChangeOffer"
-                    @order="onOrder"
-                    :offer="activeOffer"
-                    ref="offer">
-                </offer>
-            </template>
-        </modal-dialog>
+    <div v-if="!empty" class="offer-items">
+      <div v-for="item of items" class="offer-item">
+        <p>
+          <label data-t="meta">State</label>
+          <b>{{item.stateTitle}}</b>
+        </p>
+        <p>
+          <label data-t="">ID</label>
+          <a @click.prevent="onOffer(item.id)" href="#">{{item.id}}</a>
+        </p>
+        <p>
+          <label data-t="meta">Price</label>
+          {{item.price}}
+        </p>
+        <p>
+          <label data-t="meta">Driver</label>
+          {{item.driver}}
+        </p>
+      </div>
     </div>
+
+    <pagination @change="load"></pagination>
+
+    <div v-show="!loading && empty" class="alert-warning alert">
+      <span data-t="">No offers yet</span>
+    </div>
+
+    <div v-show="loading" class="loader">
+      <i class="fa fa-spinner fa-spin"></i>
+    </div>
+
+    <modal-dialog ref="offerModal" title="Offer" size="lg">
+      <template #body>
+        <offer
+          @change="onChangeOffer"
+          @order="onOrder"
+          :offer="activeOffer"
+          ref="offer">
+        </offer>
+      </template>
+    </modal-dialog>
+  </div>
 </template>
