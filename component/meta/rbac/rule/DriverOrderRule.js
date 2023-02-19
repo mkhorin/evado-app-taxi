@@ -11,16 +11,27 @@ const Base = require('evado/component/meta/rbac/rule/BaseRule');
 module.exports = class DriverOrderRule extends Base {
 
     execute () {
-        return this.isObjectTarget() ? this.checkAccess(this.getTarget()) : true;
+        return this.isObjectTarget()
+            ? this.checkAccess(this.getTarget())
+            : true;
     }
 
     async checkAccess (order) {
-        if (order.getStateName() === 'waiting') {
+        const state = order.getStateName();
+        if (state === 'waiting') {
             return true;
         }
         const meta = order.class.meta;
-        const driver = await meta.getClass('driver').find({user: this.getUserId()}).id();
-        return !!await meta.getClass('offer').find({order: order.getId(), driver}).id();
+        const user = this.getUserId();
+        const driverClass = meta.getClass('driver');
+        const driver = await driverClass.find({user}).id();
+        const offerClass = meta.getClass('offer');
+        const offerQuery = offerClass.find({
+            order: order.getId(),
+            driver
+        });
+        const id = await offerQuery.id();
+        return !!id;
     }
 
     /**
@@ -28,8 +39,11 @@ module.exports = class DriverOrderRule extends Base {
      */
     async getObjectFilter () {
         const meta = this.getBaseMeta();
-        const driver = await meta.getClass('driver').find({user: this.getUserId()}).id();
-        const orders = await meta.getClass('offer').find({driver}).column('order');
+        const user = this.getUserId();
+        const driverClass = meta.getClass('driver');
+        const driver = await driverClass.find({user}).id();
+        const offerClass = meta.getClass('offer');
+        const orders = await offerClass.find({driver}).column('order');
         const state = {_state: 'waiting'};
         return orders.length ? ['or', state, {_id: orders}] : state;
     }

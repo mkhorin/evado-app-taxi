@@ -10,7 +10,9 @@ const Base = require('evado/component/meta/rbac/rule/BaseRule');
 module.exports = class ClientOfferRule extends Base {
 
     execute () {
-        return this.isObjectTarget() ? this.checkAccess(this.getTarget()) : true;
+        return this.isObjectTarget()
+            ? this.checkAccess(this.getTarget())
+            : true;
     }
 
     async checkAccess (offer) {
@@ -24,8 +26,11 @@ module.exports = class ClientOfferRule extends Base {
      */
     async getObjectFilter () {
         const meta = this.getBaseMeta();
-        const client = await meta.getClass('client').find({user: this.getUserId()}).id();
-        const orders = await meta.getClass('order').find({client}).ids();
+        const user = this.getUserId();
+        const clientClass = meta.getClass('client');
+        const client = await clientClass.find({user}).id();
+        const orderClass = meta.getClass('order');
+        const orders = await orderClass.find({client}).ids();
         return {order: orders};
     }
 };

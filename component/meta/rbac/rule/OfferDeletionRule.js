@@ -10,7 +10,9 @@ const Base = require('evado/component/meta/rbac/rule/BaseRule');
 module.exports = class OfferDeletionRule extends Base {
 
     execute () {
-        return this.isObjectTarget() ? this.checkAccess(this.getTarget()) : false;
+        return this.isObjectTarget()
+            ? this.checkAccess(this.getTarget())
+            : false;
     }
 
     async checkAccess (offer) {
