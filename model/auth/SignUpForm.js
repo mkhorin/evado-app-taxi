@@ -6,10 +6,11 @@ module.exports = class SignUpForm extends Base {
 
     static getConstants () {
         return {
-            RULES: super.RULES.concat([
+            RULES: [
+                ...super.RULES,
                 ['type', 'required'],
                 ['type', 'range', {values: ['client', 'driver']}]
-            ])
+            ]
         };
     }
 };

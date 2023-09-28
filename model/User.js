@@ -6,12 +6,14 @@ module.exports = class User extends Base {
 
     static getConstants () {
         return {
-            ATTRS: super.ATTRS.concat(
+            ATTRS: [
+                ...super.ATTRS,
                 'type'
-            ),
-            RULES: super.RULES.concat([
+            ],
+            RULES: [
+                ...super.RULES,
                 ['type', 'string']
-            ])
+            ]
         };
     }
 
