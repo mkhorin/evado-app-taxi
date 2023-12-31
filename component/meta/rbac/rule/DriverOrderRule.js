@@ -21,7 +21,7 @@ module.exports = class DriverOrderRule extends Base {
         if (state === 'waiting') {
             return true;
         }
-        const meta = order.class.meta;
+        const {meta} = order.class;
         const user = this.getUserId();
         const driverClass = meta.getClass('driver');
         const driver = await driverClass.find({user}).id();
